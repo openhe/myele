@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeadTop signin-up='home'>
-      <span slot="logo" class="head_log" @click="reload">ele.me</span>
+      <span slot='logo' class="head_logo" @click="reload">ele.me</span>
     </HeadTop>
     <nav class="city_nav">
       <div class="city_tip">
@@ -18,7 +18,7 @@
     <section id="hot_city_container">
       <h4 class="city_title">热门城市</h4>
       <ul class="citylistul clear">
-        <router-link tag="li" v-for="item in hotcity" :to="'/city/'+item.id" :key="item.id">
+        <router-link tag="li" v-for="item in hotcity" :to="'/city/' + item.id" :key="item.id">
           {{item.name}}
         </router-link>
       </ul>
@@ -59,13 +59,11 @@ export default {
     });
     //获取热门城市
     this.$api.getCityByType("hot").then(res => {
-      console.log("hot:", res);
       this.hotcity = res;
     });
     //获取首页所有城市
     this.$api.getCityByType("group").then(res => {
-      console.log("group:", res);
-      this.guessCity = res;
+      this.groupcity = res;
     });
   },
   computed: {
@@ -94,7 +92,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/stype/mixin.scss";
+@import "@/assets/style/mixin.scss";
 .head_logo {
   left: 0.4rem;
   font-weight: 400;
@@ -127,6 +125,7 @@ export default {
     border-top: 1px solid $bc;
     border-bottom: 2px solid $bc;
     @include font(0.75rem, 1.8rem);
+
     span:nth-of-type(1) {
       color: $blue;
     }

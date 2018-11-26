@@ -11,6 +11,7 @@ export default new Vuex.Store({
   },
   mutations: {
     getUserInfo(state, info) {
+      console.log("info:", info);
       if (state.userInfo && state.userInfo.username !== info.username) {
         return;
       }

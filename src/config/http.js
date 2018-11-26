@@ -2,10 +2,11 @@ import Vue from "vue";
 import axios from "axios";
 
 //全局使用axios
-Vue.prototype.$axios = axios;
+axios.defaults.withCredentials = true;
 axios.defaults.baseURL = "http://elm.cangdu.org";
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8";
+Vue.prototype.$axios = axios;
 
 // 统一Get请求
 export function get(url, params) {
